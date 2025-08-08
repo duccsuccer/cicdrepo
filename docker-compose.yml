@@ -1,0 +1,35 @@
+services:
+  app:
+    build: ./app
+    container_name: php_web
+    ports:
+      - "9090:80"
+    volumes:
+      -  ./app:/var/www/html
+    environment:
+      DB_HOST: mysql
+      DB_NAME: mydb
+      DB_USER: root
+      DB_PASS: rootpass
+      DB_PORT: 3306
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
