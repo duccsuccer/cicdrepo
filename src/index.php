@@ -5,7 +5,7 @@
     <title>CNAS Assignment - Team Members List</title>
 </head>
 <body>
-    <h2>Team Members in Class - T01 Team –4</h2>
+    <h2>Team Members in Class - T01 Team 4</h2>
     <a href="create.php">Add New Team Member</a>
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
